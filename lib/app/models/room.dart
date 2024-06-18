@@ -10,5 +10,5 @@ class Room with _$Room {
       @JsonKey(name: 'room_code') required String roomCode,
       @JsonKey(name: 'created_at') required DateTime createdAt}) = _Room;
 
-  factory Room.fromJson(Map<String, Object?> json) => _$RoomFromJson(json);
+  factory Room.fromJson(Map<String, dynamic> json) => _$RoomFromJson(json);
 }

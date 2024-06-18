@@ -1,25 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'clients_stream.dart';
+part of 'current_game_state.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clientsStreamHash() => r'd0e74749d46c44ef9992ab970c1a5a69588d9cd7';
+String _$currentGameStateHash() => r'32f291d3863a0d6aacab52a5ac8b43ea8bb6be0b';
 
-/// See also [clientsStream].
-@ProviderFor(clientsStream)
-final clientsStreamProvider = AutoDisposeStreamProvider<List<Client>>.internal(
-  clientsStream,
-  name: r'clientsStreamProvider',
+/// See also [CurrentGameState].
+@ProviderFor(CurrentGameState)
+final currentGameStateProvider =
+    NotifierProvider<CurrentGameState, CurrentGameStateData>.internal(
+  CurrentGameState.new,
+  name: r'currentGameStateProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$clientsStreamHash,
+      : _$currentGameStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef ClientsStreamRef = AutoDisposeStreamProviderRef<List<Client>>;
+typedef _$CurrentGameState = Notifier<CurrentGameStateData>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kick_flip/app/db_functions/room/room_functions.dart';
 import 'package:kick_flip/app/models/client.dart';
 import 'package:kick_flip/app/routing/routes.dart';
 import 'package:kick_flip/app/state/clients_stream.dart';
+import 'package:kick_flip/app/state/current_game_state.dart';
 
 class TestJoinPage extends ConsumerWidget {
   const TestJoinPage({super.key});
@@ -10,6 +12,8 @@ class TestJoinPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     AsyncValue<List<Client>> clientStream = ref.watch(clientsStreamProvider);
+    var currentGameState = ref.watch(currentGameStateProvider);
+    var currentGameStateActions = ref.watch(currentGameStateProvider.notifier);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -29,17 +33,54 @@ class TestJoinPage extends ConsumerWidget {
         ),
         body: Container(
           color: Theme.of(context).colorScheme.primary,
-          child: Center(
-            child: switch (clientStream) {
-              AsyncValue(:final valueOrNull?) => Center(
-                    child: Wrap(
-                  children: [
-                    ...valueOrNull.map((client) => PlayerTag(client: client)),
-                  ],
-                )),
-              AsyncValue(:final error?) => Text('Error: $error'),
-              _ => const CircularProgressIndicator(),
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: () async {
+                    await createNewRoom(ref);
+                  },
+                  child: Text('Create New Room')),
+              SizedBox(
+                height: 16,
+              ),
+              Text(
+                'Room Code:',
+                style:
+                    TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+              ),
+              Text(
+                currentGameState.room?.roomCode ?? '',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontSize: 64),
+              ),
+              SizedBox(
+                height: 64,
+              ),
+              Center(
+                child: switch (clientStream) {
+                  AsyncValue(:final valueOrNull?) => Center(
+                        child: Column(
+                      children: [
+                        Text(
+                          'Players:',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.onPrimary),
+                        ),
+                        Wrap(
+                          children: [
+                            ...valueOrNull
+                                .map((client) => PlayerTag(client: client)),
+                          ],
+                        ),
+                      ],
+                    )),
+                  AsyncValue(:final error?) => Text('Error: $error'),
+                  _ => const CircularProgressIndicator(),
+                },
+              ),
+            ],
           ),
         ),
       ),

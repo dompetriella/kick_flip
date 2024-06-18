@@ -11,5 +11,5 @@ class Client with _$Client {
       @JsonKey(name: 'connected_at') required DateTime connectedAt,
       @JsonKey(name: 'room_id') required int roomId}) = _Client;
 
-  factory Client.fromJson(Map<String, Object?> json) => _$ClientFromJson(json);
+  factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
 }
