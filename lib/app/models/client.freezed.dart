@@ -26,8 +26,8 @@ mixin _$Client {
   String get clientUsername => throw _privateConstructorUsedError;
   @JsonKey(name: 'connected_at')
   DateTime get connectedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'room_id')
-  int get roomId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'room_code')
+  String get roomCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ abstract class $ClientCopyWith<$Res> {
       {@JsonKey(name: 'id') int clientId,
       @JsonKey(name: 'username') String clientUsername,
       @JsonKey(name: 'connected_at') DateTime connectedAt,
-      @JsonKey(name: 'room_id') int roomId});
+      @JsonKey(name: 'room_code') String roomCode});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? clientId = null,
     Object? clientUsername = null,
     Object? connectedAt = null,
-    Object? roomId = null,
+    Object? roomCode = null,
   }) {
     return _then(_value.copyWith(
       clientId: null == clientId
@@ -77,10 +77,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.connectedAt
           : connectedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
-              as int,
+      roomCode: null == roomCode
+          ? _value.roomCode
+          : roomCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       {@JsonKey(name: 'id') int clientId,
       @JsonKey(name: 'username') String clientUsername,
       @JsonKey(name: 'connected_at') DateTime connectedAt,
-      @JsonKey(name: 'room_id') int roomId});
+      @JsonKey(name: 'room_code') String roomCode});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? clientId = null,
     Object? clientUsername = null,
     Object? connectedAt = null,
-    Object? roomId = null,
+    Object? roomCode = null,
   }) {
     return _then(_$ClientImpl(
       clientId: null == clientId
@@ -128,10 +128,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.connectedAt
           : connectedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
-              as int,
+      roomCode: null == roomCode
+          ? _value.roomCode
+          : roomCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -143,7 +143,7 @@ class _$ClientImpl implements _Client {
       {@JsonKey(name: 'id') required this.clientId,
       @JsonKey(name: 'username') required this.clientUsername,
       @JsonKey(name: 'connected_at') required this.connectedAt,
-      @JsonKey(name: 'room_id') required this.roomId});
+      @JsonKey(name: 'room_code') required this.roomCode});
 
   factory _$ClientImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClientImplFromJson(json);
@@ -158,12 +158,12 @@ class _$ClientImpl implements _Client {
   @JsonKey(name: 'connected_at')
   final DateTime connectedAt;
   @override
-  @JsonKey(name: 'room_id')
-  final int roomId;
+  @JsonKey(name: 'room_code')
+  final String roomCode;
 
   @override
   String toString() {
-    return 'Client(clientId: $clientId, clientUsername: $clientUsername, connectedAt: $connectedAt, roomId: $roomId)';
+    return 'Client(clientId: $clientId, clientUsername: $clientUsername, connectedAt: $connectedAt, roomCode: $roomCode)';
   }
 
   @override
@@ -177,13 +177,14 @@ class _$ClientImpl implements _Client {
                 other.clientUsername == clientUsername) &&
             (identical(other.connectedAt, connectedAt) ||
                 other.connectedAt == connectedAt) &&
-            (identical(other.roomId, roomId) || other.roomId == roomId));
+            (identical(other.roomCode, roomCode) ||
+                other.roomCode == roomCode));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, clientId, clientUsername, connectedAt, roomId);
+      Object.hash(runtimeType, clientId, clientUsername, connectedAt, roomCode);
 
   @JsonKey(ignore: true)
   @override
@@ -201,10 +202,11 @@ class _$ClientImpl implements _Client {
 
 abstract class _Client implements Client {
   factory _Client(
-      {@JsonKey(name: 'id') required final int clientId,
-      @JsonKey(name: 'username') required final String clientUsername,
-      @JsonKey(name: 'connected_at') required final DateTime connectedAt,
-      @JsonKey(name: 'room_id') required final int roomId}) = _$ClientImpl;
+          {@JsonKey(name: 'id') required final int clientId,
+          @JsonKey(name: 'username') required final String clientUsername,
+          @JsonKey(name: 'connected_at') required final DateTime connectedAt,
+          @JsonKey(name: 'room_code') required final String roomCode}) =
+      _$ClientImpl;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$ClientImpl.fromJson;
 
@@ -218,8 +220,8 @@ abstract class _Client implements Client {
   @JsonKey(name: 'connected_at')
   DateTime get connectedAt;
   @override
-  @JsonKey(name: 'room_id')
-  int get roomId;
+  @JsonKey(name: 'room_code')
+  String get roomCode;
   @override
   @JsonKey(ignore: true)
   _$$ClientImplCopyWith<_$ClientImpl> get copyWith =>

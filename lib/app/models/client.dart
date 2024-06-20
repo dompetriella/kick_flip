@@ -9,7 +9,7 @@ class Client with _$Client {
       {@JsonKey(name: 'id') required int clientId,
       @JsonKey(name: 'username') required String clientUsername,
       @JsonKey(name: 'connected_at') required DateTime connectedAt,
-      @JsonKey(name: 'room_id') required int roomId}) = _Client;
+      @JsonKey(name: 'room_code') required String roomCode}) = _Client;
 
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
 }
