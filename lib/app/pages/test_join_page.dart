@@ -13,7 +13,6 @@ class TestJoinPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     AsyncValue<List<Client>> clientStream = ref.watch(clientsStreamProvider);
     var currentGameState = ref.watch(currentGameStateProvider);
-    var currentGameStateActions = ref.watch(currentGameStateProvider.notifier);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

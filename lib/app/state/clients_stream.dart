@@ -14,7 +14,7 @@ Stream<List<Client>> clientsStream(ClientsStreamRef ref) async* {
     final stream = supabase
         .from('clients')
         .stream(primaryKey: ['id'])
-        .eq('room_id', room.roomId)
+        .eq('room_code', room.roomCode)
         .asBroadcastStream();
 
     yield* stream.map(
