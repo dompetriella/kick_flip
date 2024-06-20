@@ -6,7 +6,7 @@ part of 'rooms_stream.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$roomsStreamHash() => r'be1af671b7665b57dda2839615e0eb5bf46ed54c';
+String _$roomsStreamHash() => r'6c5d7de7344ded613f3841b95250f5b7bec1a9a9';
 
 /// See also [roomsStream].
 @ProviderFor(roomsStream)
