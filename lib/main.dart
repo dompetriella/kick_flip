@@ -5,13 +5,11 @@ import 'package:kick_flip/app/app.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: 'dotenv');
 
   await Supabase.initialize(
       url: dotenv.env['BASE_URL'].toString(),
       anonKey: dotenv.env['API_KEY'].toString());
   runApp(const ProviderScope(child: App()));
 }
-
-final supabase = Supabase.instance.client;

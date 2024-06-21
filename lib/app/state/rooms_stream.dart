@@ -11,7 +11,7 @@ part 'rooms_stream.g.dart';
 Stream<List<Room>> roomsStream(RoomsStreamRef ref) async* {
   Room? room = ref.watch(currentGameStateProvider).room;
   if (room != null) {
-    final stream = supabase
+    final stream = Supabase.instance.client
         .from('rooms')
         .stream(primaryKey: ['id'])
         .eq('id', room.roomId)

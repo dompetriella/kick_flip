@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kick_flip/app/models/room.dart';
 import 'package:kick_flip/app/state/current_game_state.dart';
@@ -6,16 +7,17 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 String _createRoomCode() {
-  String guid = Uuid().v4();
-  String roomCode = guid.substring(0, 6);
-  return roomCode.toUpperCase();
+  List<String> alphabet =
+      List<String>.generate(26, (i) => String.fromCharCode(i + 65));
+  alphabet.shuffle();
+  return alphabet.take(5).toList().join();
 }
 
 Future createNewRoom(WidgetRef ref) async {
   String roomCode = _createRoomCode();
   PostgrestResponse<List<Map<String, dynamic>>>? response;
   try {
-    response = await supabase
+    response = await Supabase.instance.client
         .from('rooms')
         .insert({'room_code': roomCode})
         .select('*')

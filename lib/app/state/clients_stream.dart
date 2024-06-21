@@ -4,6 +4,7 @@ import 'package:kick_flip/app/models/room.dart';
 import 'package:kick_flip/app/state/current_game_state.dart';
 import 'package:kick_flip/main.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'clients_stream.g.dart';
 
@@ -11,7 +12,7 @@ part 'clients_stream.g.dart';
 Stream<List<Client>> clientsStream(ClientsStreamRef ref) async* {
   Room? room = ref.watch(currentGameStateProvider).room;
   if (room != null) {
-    final stream = supabase
+    final stream = Supabase.instance.client
         .from('clients')
         .stream(primaryKey: ['id'])
         .eq('room_code', room.roomCode)
