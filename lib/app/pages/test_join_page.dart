@@ -40,11 +40,6 @@ class TestJoinPage extends ConsumerWidget {
                     await createNewRoom(ref);
                   },
                   child: Text('Create New Room')),
-              ElevatedButton(
-                  onPressed: () async {
-                    await createNewRoomWithoutSelecct(ref);
-                  },
-                  child: Text('Create New')),
               SizedBox(
                 height: 16,
               ),

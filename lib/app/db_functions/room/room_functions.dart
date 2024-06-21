@@ -14,7 +14,6 @@ String _createRoomCode() {
 Future createNewRoom(WidgetRef ref) async {
   String roomCode = _createRoomCode();
   PostgrestResponse<List<Map<String, dynamic>>>? response;
-  print("trying with select");
   try {
     response = await supabase
         .from('rooms')
@@ -31,28 +30,6 @@ Future createNewRoom(WidgetRef ref) async {
       ref
           .read(currentGameStateProvider.notifier)
           .setCurrentRoom(Room.fromJson(data));
-    } else {
-      print("Data as list returned from db as list of NULL");
-    }
-  } else {
-    print('Response return null- No tables returned');
-  }
-}
-
-Future createNewRoomWithoutSelecct(WidgetRef ref) async {
-  String roomCode = _createRoomCode();
-  PostgrestResponse<List<Map<String, dynamic>>>? response;
-  print('trying without select');
-  try {
-    response = await supabase.from('rooms').insert({'room_code': roomCode});
-  } catch (e) {
-    print('Failure to reach db, Error: ${e.toString()}');
-  }
-
-  if (response != null) {
-    Map<String, dynamic>? data = response.data.firstOrNull;
-    if (data != null) {
-      print(data);
     } else {
       print("Data as list returned from db as list of NULL");
     }
