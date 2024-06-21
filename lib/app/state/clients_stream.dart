@@ -17,6 +17,10 @@ Stream<List<Client>> clientsStream(ClientsStreamRef ref) async* {
         .eq('room_code', room.roomCode)
         .asBroadcastStream();
 
+    if (await stream.isEmpty) {
+      print('Data from db has returned empty');
+    }
+
     yield* stream.map(
         (jsonList) => jsonList.map((json) => Client.fromJson(json)).toList());
   }

@@ -18,7 +18,7 @@ Future createNewRoom(WidgetRef ref) async {
     response = await supabase
         .from('rooms')
         .insert({'room_code': roomCode})
-        .select()
+        .select('*')
         .count();
   } catch (e) {
     print('Failure to reach db, Error: ${e.toString()}');
