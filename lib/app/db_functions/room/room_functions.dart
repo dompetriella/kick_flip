@@ -17,7 +17,7 @@ Future createNewRoom(WidgetRef ref) async {
   String roomCode = _createRoomCode();
   PostgrestResponse<List<Map<String, dynamic>>>? response;
   try {
-    response = await Supabase.instance.client
+    response = await supabase
         .from('rooms')
         .insert({'room_code': roomCode})
         .select('*')

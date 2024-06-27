@@ -12,7 +12,7 @@ part 'clients_stream.g.dart';
 Stream<List<Client>> clientsStream(ClientsStreamRef ref) async* {
   Room? room = ref.watch(currentGameStateProvider).room;
   if (room != null) {
-    final stream = Supabase.instance.client
+    final stream = supabase
         .from('clients')
         .stream(primaryKey: ['id'])
         .eq('room_code', room.roomCode)
