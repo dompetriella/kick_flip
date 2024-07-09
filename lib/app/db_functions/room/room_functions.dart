@@ -1,10 +1,8 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kick_flip/app/models/room.dart';
 import 'package:kick_flip/app/state/current_game_state.dart';
 import 'package:kick_flip/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:uuid/uuid.dart';
 
 String _createRoomCode() {
   List<String> alphabet =

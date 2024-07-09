@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kick_flip/app/pages/test_join_page.dart';
 import 'package:kick_flip/app/routing/routes.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,12 +14,6 @@ class HomePage extends StatelessWidget {
               child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // ElevatedButton(
-              //     style: ElevatedButton.styleFrom(
-              //         shape: RoundedRectangleBorder(
-              //             borderRadius: BorderRadius.circular(5))),
-              //     onPressed: () => ClickEmRoute().go(context),
-              //     child: Text('click em game')),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
